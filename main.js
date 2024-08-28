@@ -57,7 +57,7 @@ function operate() {
   }
   currentScreen.textContent = roundNumber(previousValue);
   previousScreen.textContent = '';
-  currentValue = roundNumber(previousValue);
+  currentValue = roundNumber(currentScreen.textContent);
 }
 
 function roundNumber(num) {
