@@ -26,6 +26,10 @@ clear.addEventListener('click', function() {
   previousScreen.textContent = previousValue;
 })
 
+equals.addEventListener('click', function() {
+  operate();
+})
+
 function handleNumber(num) {
   if (currentValue.length <= 9) {
     currentValue += num;
@@ -39,3 +43,23 @@ function handleOperator(op) {
   currentValue = '';
 }
 
+function operate() {
+  currentValue = Number(currentValue);
+  previousValue = Number(previousValue);
+  if (operator === '+') {
+    previousValue += currentValue;
+  } else if (operator === '-') {
+    previousValue -= currentValue;
+  } else if (operator === '*') {
+    previousValue *= currentValue;
+  } else if (operator === '/') {
+    previousValue /= currentValue;
+  }
+  currentScreen.textContent = roundNumber(previousValue);
+  previousScreen.textContent = '';
+  currentValue = roundNumber(previousValue);
+}
+
+function roundNumber(num) {
+  return Math.round(num * 1000) / 1000;
+}
